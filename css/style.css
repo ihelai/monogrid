@@ -1,0 +1,214 @@
+@charset "utf-8";
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* type */
+
+@font-face {
+    font-family: "Ortica Bold";
+    src: url("../assets/fonts/Ortica-Bold.woff2") format("woff2"),
+    url("../fonts/Ortica-Bold.woff") format("woff");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Ortica Light";
+    src: url("../assets/fonts/Ortica-Light.woff2") format("woff2"),
+    url("../fonts/Ortica-Light.woff") format("woff");
+    font-weight: 300;
+}
+.bold {
+    font-family: "Ortica Bold";
+}
+
+.light {
+    font-family: "Ortica Light";
+} 
+
+.f--10 {
+    font-size: 10px;
+} 
+
+.f--caption {
+    font-size: 3vw;
+}
+
+.uppercase {
+    text-transform: uppercase;
+} 
+
+/* colors */
+
+.black {
+    color: #0E0F11
+} 
+.ottanio {
+    color: #60A3AD ;
+} 
+
+/* spaces */
+.mt--15 {
+    margin-top: 15px;
+}
+
+/* main */
+
+body {
+    background-color: #FFFCEF;
+    font-family: 'Ortica Light';
+    background-image: url('../assets/img/texture.png');
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+	background-blend-mode: difference;
+} 
+
+header {
+    padding: 30px;
+}
+
+.content {
+    width: 100%;
+    text-align: center;
+}
+
+/* slider */
+.slider__container {
+    margin-top: 50px;
+}
+
+.slider--img {
+    height: 50vh; width: 70vh;
+    object-position: center;
+    object-fit: cover;
+}
+
+/* arrows */
+.slick-arrow {
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: black;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    outline: black solid 1px;
+    outline-offset: 8px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 20px;
+    transition: all .2s ease-out;
+}
+
+.slick-arrow:hover {
+    outline-offset: 4px;
+} 
+
+.slick-arrow.slick-prev  {
+    left: 80px;
+    background-image: url('../assets/img/arrow-l.svg');
+}
+
+.slick-arrow.slick-next  {
+    right: 80px;
+    background-image: url('../assets/img/arrow-r.svg');
+}
+
+.slide {
+    opacity: 0.3;
+    transition: all 0.5s ease;
+    margin: 0 8vh;
+    display: flex!important;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* slider animation */
+.slide.slick-current {
+    opacity: 1;
+    transition: all 0.5s ease;
+}
+
+.slick-slide {
+    transform: scale(0.7);
+}
+
+.slick-slide.slick-center + .slick-slide {
+    transform: scale(0.7) rotate(10deg);
+}
+
+.slick-slide.slick-center + .slick-slide + .slick-slide {
+    transform: scale(1) ;
+}
+
+.slick-slide.slick-active {
+    transform: scale(0.7) rotate(-10deg);
+}
+
+.slick-slide.slick-center {
+    transform: scale(1) rotate(0deg);
+}
+
+.dots__container {
+    margin-top: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.dots__container li button {
+	font-size: 0px;
+	height: 1px;
+	border: 0;
+	background-color: #0E0F11;
+	/* width: calc(10vw/5); */
+}
+
+.dots__container li.slick-active button {
+    background-color: #60A3AD;
+} 
+
+
+/* slider text */
+
+.slick-current #slider--text__container, 
+.slide .ottanio {
+    opacity: 0;
+}
+
+#slider--text__container {
+    margin-top: 30px;
+    /* width: 70vh; */
+}
