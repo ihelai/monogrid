@@ -1,5 +1,5 @@
 @charset "utf-8";
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+html, body, div, span, h1, p, ul, li {
     margin: 0;
     padding: 0;
     border: 0;
@@ -7,25 +7,11 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font: inherit;
     vertical-align: baseline;
 }
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-    display: block;
-}
 body {
     line-height: 1;
 }
 ol, ul {
     list-style: none;
-}
-blockquote, q {
-    quotes: none;
-}
-blockquote:before, blockquote:after, q:before, q:after {
-    content: '';
-    content: none;
-}
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
 }
 * {
     margin: 0;
@@ -74,10 +60,10 @@ table {
 /* colors */
 
 .black {
-    color: #0E0F11
+    color: #0E0F11;
 } 
 .ottanio {
-    color: #60A3AD ;
+    color: #60A3AD;
 } 
 
 /* spaces */
@@ -125,21 +111,34 @@ header {
     cursor: pointer;
     top: 50%;
     transform: translateY(-50%);
-    background-color: black;
+    background-color: #0E0F11;
     border-radius: 50%;
     height: 40px;
     width: 40px;
-    outline: black solid 1px;
-    outline-offset: 8px;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 20px;
     transition: all .2s ease-out;
 }
 
-.slick-arrow:hover {
-    outline-offset: 4px;
-} 
+.slick-arrow::before {
+	position: absolute;
+	content: '';
+	border: 1px solid #0E0F11;
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	left: 50%;
+	top: 50%;
+	transition: all .3s ease;
+}
+
+.slick-arrow:hover::before {
+    height: 45px;
+	width: 45px;
+}
+
 
 .slick-arrow.slick-prev  {
     left: 80px;
@@ -188,8 +187,6 @@ header {
     transform: scale(1) rotate(0deg);
 }
 
-
-
 .dots__container {
     margin: 50px auto 0 auto;
     display: flex;
@@ -223,14 +220,34 @@ header {
     margin-top: 30px;
 }
 
+.date {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    opacity: 0.6;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+
+.square {
+    height: 5px;
+    width: 5px;
+    border-radius: 2px;
+    background-color: #0E0F11;
+}
+
+
 @media only screen and (max-width: 768px) {
     
     header {display: none;} 
     
     .content {padding-top: 30px;} 
     .slider--img {
-        height: 50vw;
-        width: 70vw;
+        height: 70vw;
+        width: calc(100vw - 40px);
     }
     
     .slick-arrow {
@@ -239,18 +256,14 @@ header {
         bottom: 20px;
     }
     
-    .dots__container {
-        width: 70vw;
-    }
-    
     .f--caption {
         font-size: 18px;
     }
     
-    #slider--text__container {
+    #slider--text__container, .dots__container {
         width: 70vw;
         margin: 30px auto 0 auto;
     } 
     
-    
+    .date {display: none;}
 }
