@@ -18,7 +18,7 @@ Recuperate 6 immagini da: <a href="https://picsum.photos/">Picsum</a> <br>
 L'API non ritorna tag e caption, perciò ho inserito l'ID dinamico.
 
 <h2>📌 Prossimi TODOs</h2>
-- 🛠 &nbsp; Fix animazione su slide clone
-
+- 🛠 &nbsp; Fix animazione su slide clone<br>
+- 🛠 &nbsp; Export bg con blend-mode già applicato per fixare safari
 <br><br><br>
 👩🏼‍💻
