@@ -3,7 +3,7 @@ var slider;
 var textAnim;
 var id;
 var author;
-var initSlide = 0;
+var initSlide = 1;
 
 // get images from picsum
 
@@ -14,20 +14,16 @@ var requestOptions = {
 
 window.addEventListener('hashchange', ()=> {
     initSlide = location.hash.replace('#', '');
-    if(initSlide > images.length) {
+    if(initSlide > images.length || initSlide == 0) {
         history.pushState("", "", `${location.pathname}${location.search}`);
-        initSlide = 0;
+        initSlide = 1;
     }
-    $('#slider').slick('slickGoTo', initSlide);
+    $('#slider').slick('slickGoTo', initSlide-1);
 });
 
 window.onload = function() {
-    // if(location.hash !== '') {
-    //     initSlide = location.hash.replace('#', '');
-    // }
-    console.log(initSlide, 'init slide');
-
-    slider = document.getElementById('slider');
+   slider = document.getElementById('slider');
+    
     // get images
     fetch("https://picsum.photos/v2/list?page=3&limit=6", requestOptions)
     .then(response => response.json())
@@ -49,23 +45,25 @@ function initImages(img) {
         author = el.author;
         
         document.getElementById('author').innerHTML = author;
-        // document.getElementsByClassName('id').innerHTML = id;
         $('.id').html(id);
+
     });
     initSlick();
     
 } 
 
-// $(document).ready(function() {})
 function initSlick() {
+
+    tlContent();
+    
     if(location.hash !== '') {
         initSlide = parseInt(location.hash.replace('#', ''));
-        if(initSlide > images.length) {
+        if(initSlide > images.length || initSlide == 0) {
             history.pushState("", "", `${location.pathname}${location.search}`);
-            initSlide = 0;
+            initSlide = 1;
         }
     }
-    console.log(initSlide, 'on init');
+
     $('#slider').slick({
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -74,7 +72,7 @@ function initSlick() {
         variableHeight: true,
         cssEase: 'ease-out',
         speed: 800,
-        initialSlide: initSlide,
+        initialSlide: initSlide-1,
         touchMove: true,
         swipeToSlide: true,
         dots: true,
@@ -92,7 +90,7 @@ function initSlick() {
             }
         ] 
     });
-    // $('#slider').slick('slickGoTo', initSlide);
+
     animation();
     
     //Implementing  scroll
@@ -106,24 +104,13 @@ function initSlick() {
     }))
     
     .on('afterChange', function(event, slick, currentSlide, nextSlide) {
-        // window.location = "#"+currentSlide;
         updateText(currentSlide);
         animation();
-        console.log('afterchange');
     })
-    .on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+    .on('beforeChange', function() {
         textAnim.reverse();
-        console.log('beforehange');
     })
-    
-    // set width based on number of el
-    let dotsCollection = document.getElementsByTagName('button');
-    let dots = [...dotsCollection];
-    dots.forEach(dot => {
-        dot.classList.add('dot');
-        dot.style.setProperty("width", "calc(40vw/"+dots.length+")");
-    });
-    
+
 }
 
 
@@ -147,9 +134,13 @@ function animation() {
     })
 }
 
-// function tlContent() {
-//     var tlAnim = gsap.timeline();
-//     tlAnim.play();
-//     tlAnim.fromTO
-// }
+function tlContent() {
+    var tlAnim = gsap.timeline();
+    tlAnim.play();
+    tlAnim.to('.content', {
+        opacity: 1,
+        duration: 0.3,
+        delay: 0.3
+    })
+}
 

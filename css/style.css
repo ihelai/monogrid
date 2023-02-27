@@ -63,6 +63,10 @@ table {
     font-size: 3vw;
 }
 
+.f--tag {
+    font-size: 12px;
+}
+
 .uppercase {
     text-transform: uppercase;
 } 
@@ -90,7 +94,7 @@ body {
     background-position: center;
     background-size: cover;
     min-height: 100vh;
-	background-blend-mode: difference;
+    background-blend-mode: difference;
 } 
 
 header {
@@ -100,6 +104,7 @@ header {
 .content {
     width: 100%;
     text-align: center;
+    opacity: 0;
 }
 
 /* slider */
@@ -151,8 +156,8 @@ header {
     transition: all 0.5s ease;
     margin: 0 8vh;
     display: flex!important;
-	flex-direction: column;
-	align-items: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* slider animation */
@@ -163,6 +168,7 @@ header {
 
 .slick-slide {
     transform: scale(0.7);
+    transition: all 0.5s ease;
 }
 
 .slick-slide.slick-center + .slick-slide {
@@ -175,25 +181,30 @@ header {
 
 .slick-slide.slick-active {
     transform: scale(0.7) rotate(-10deg);
+    transition: all 0.5s ease;
 }
 
 .slick-slide.slick-center {
     transform: scale(1) rotate(0deg);
 }
 
+
+
 .dots__container {
-    margin-top: 50px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    margin: 50px auto 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40vw;
 }
+.dots__container li {flex-grow: 1;}
 
 .dots__container li button {
-	font-size: 0px;
-	height: 1px;
-	border: 0;
-	background-color: #0E0F11;
-	/* width: calc(10vw/5); */
+    font-size: 0px;
+    height: 1px;
+    border: 0;
+    background-color: #0E0F11;
+    width: 100%;
 }
 
 .dots__container li.slick-active button {
@@ -210,5 +221,36 @@ header {
 
 #slider--text__container {
     margin-top: 30px;
-    /* width: 70vh; */
+}
+
+@media only screen and (max-width: 768px) {
+    
+    header {display: none;} 
+    
+    .content {padding-top: 30px;} 
+    .slider--img {
+        height: 50vw;
+        width: 70vw;
+    }
+    
+    .slick-arrow {
+        position: fixed;
+        top: auto;
+        bottom: 20px;
+    }
+    
+    .dots__container {
+        width: 70vw;
+    }
+    
+    .f--caption {
+        font-size: 18px;
+    }
+    
+    #slider--text__container {
+        width: 70vw;
+        margin: 30px auto 0 auto;
+    } 
+    
+    
 }
